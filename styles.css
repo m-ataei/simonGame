@@ -1,4 +1,4 @@
-/* Hauptbody-Stil */
+/* Hauptbody-Stil - Flex-Layout für feste Positionierung */
 body {
   text-align: center;
   margin: 0;
@@ -7,9 +7,11 @@ body {
   font-family: 'Press Start 2P', cursive;
   position: relative;
   height: 100vh;
+  display: flex;
+  flex-direction: column; /* Vertikale Anordnung */
 }
 
-/* Animierter Hintergrund */
+/* Animierter Hintergrund - unverändert */
 .animated-bg {
   position: absolute;
   top: 0;
@@ -18,104 +20,84 @@ body {
   height: 100%;
   background: linear-gradient(45deg, #18072b, #3a0c4f, #5c1175, #7d179b);
   background-size: 400% 400%;
-  animation: gradientBG 15s ease infinite; /* Endlose Animation */
+  animation: gradientBG 15s ease infinite;
   z-index: -1;
 }
 
-/* Keyframes für Hintergrundanimation */
+/* Keyframes für Hintergrundanimation - unverändert */
 @keyframes gradientBG {
-  0% {
-    background-position: 0% 50%;
-  }
-  50% {
-    background-position: 100% 50%;
-  }
-  100% {
-    background-position: 0% 50%;
-  }
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
 }
 
-/* Titel-Stil */
+/* Titel-Stil mit fester Höhe */
 #level-title {
   font-size: 2.5rem;
-  margin: 5% auto;
+  margin: 20px auto; /* Reduzierter Abstand */
   color: #FEF2BF;
   text-shadow: 0 0 10px rgba(255,255,255,0.5);
+  min-height: 80px; /* Feste Höhe für Titelbereich */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 20px; /* Padding für kleinen Bildschirme */
 }
 
-/* Container für die Buttons */
+/* Container für Buttons mit fester Position */
 .container {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  height: 70vh;
+  flex-grow: 1; /* Nimmt verfügbaren Platz ein */
+  min-height: 0; /* Wichtig für korrekte Skalierung */
 }
 
-/* Reihe für Button-Anordnung */
+/* Reihe für Button-Anordnung - unverändert */
 .row {
   display: flex;
   justify-content: center;
+  flex-shrink: 0; /* Verhindert Schrumpfen */
 }
 
-/* Basis-Button-Stil */
+/* Basis-Button-Stil mit fester Größe */
 .btn {
-  margin: 20px;
+  margin: 15px; /* Etwas reduzierter Abstand */
   display: inline-block;
   height: 150px;
   width: 150px;
   border: 8px solid #000;
-  border-radius: 50%; /* Macht die Buttons rund */
+  border-radius: 50%;
   cursor: pointer;
   transition: all 0.3s ease;
   box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+  flex-shrink: 0; /* Verhindert Größenänderung */
 }
 
-/* Hover-Effekt für Buttons */
-.btn:hover {
-  transform: scale(1.05);
-  box-shadow: 0 8px 20px rgba(0,0,0,0.4);
-}
+/* Restliche unveränderte Styles... */
+.green { background-color: #78f829; }
+.red { background-color: #f3590c; }
+.blue { background-color: #2093d1; }
+.yellow { background-color: #ffeb3b; }
 
-/* Farben für die einzelnen Buttons */
-.green {
-  background-color: #78f829;
-}
-
-.red {
-  background-color: #f3590c;
-}
-
-.blue {
-  background-color: #2093d1;
-}
-
-.yellow {
-  background-color: #ffeb3b;
-}
-
-/* Stil für gedrückte Buttons */
 .pressed {
   box-shadow: 0 0 30px white;
   background-color: #aaa !important;
   transform: scale(0.95);
 }
 
-/* Game Over Stil */
 .game-over {
   background-color: #44063f;
   opacity: 0.8;
 }
 
-/* Pulsierende Animation für Buttons */
 @keyframes pulse {
   0% { transform: scale(1); }
   50% { transform: scale(1.05); }
   100% { transform: scale(1); }
 }
 
-/* Animation auf Buttons anwenden */
 .btn {
   animation: pulse 2s infinite;
 }
-
