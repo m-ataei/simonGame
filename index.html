@@ -1,42 +1,37 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
-
 <head>
-  <!-- Grundlegende Meta-Informationen -->
+  <!-- Grundlegende Metadaten -->
   <meta charset="utf-8">
-  <title>Simon</title>
-  <!-- Stylesheet und Schriftart einbinden -->
+  <title>Simon Spiel</title>
+  <!-- Stylesheets -->
   <link rel="stylesheet" href="styles.css">
   <link href="https://fonts.googleapis.com/css?family=Press+Start+2P" rel="stylesheet">
 </head>
-
 <body>
-  <!-- Titel mit Startanweisung -->
-  <h1 id="level-title">Drücke eine Taste zum Starten</h1>
+  <!-- Animierter Hintergrund -->
+ 
+  <div class="animated-bg" id="animatedBg"></div>
+  <!-- Spieltitel -->
+  <h1 id="level-title">Zum Starten auf einen Button klicken</h1>
   
   <!-- Hauptcontainer für das Spiel -->
   <div class="container">
-    <!-- Erste Reihe der Farbbuttons -->
+    <!-- Erste Button-Reihe -->
     <div class="row">
-      <!-- Grün Button -->
-      <div type="button" id="green" class="btn green"></div>
-      <!-- Rot Button -->
-      <div type="button" id="red" class="btn red"></div>
+      <div type="button" id="green" class="btn circle green"></div>
+      <div type="button" id="red" class="btn circle red"></div>
     </div>
-
-    <!-- Zweite Reihe der Farbbuttons -->
+    
+    <!-- Zweite Button-Reihe -->
     <div class="row">
-      <!-- Gelb Button -->
-      <div type="button" id="yellow" class="btn yellow"></div>
-      <!-- Blau Button -->
-      <div type="button" id="blue" class="btn blue"></div>
+      <div type="button" id="yellow" class="btn circle yellow"></div>
+      <div type="button" id="blue" class="btn circle blue"></div>
     </div>
   </div>
 
-  <!-- jQuery und JavaScript einbinden -->
+  <!-- JavaScript Einbindungen -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="game.js" charset="utf-8"></script>
-
 </body>
-
 </html>

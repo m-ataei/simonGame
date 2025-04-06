@@ -1,53 +1,121 @@
+/* Hauptbody-Stil */
 body {
   text-align: center;
-  background-color: #18072b;
-}
-
-#level-title {
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
   font-family: 'Press Start 2P', cursive;
-  font-size: 3rem;
-  margin:  5%;
+  position: relative;
+  height: 100vh;
+}
+
+/* Animierter Hintergrund */
+.animated-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(45deg, #18072b, #3a0c4f, #5c1175, #7d179b);
+  background-size: 400% 400%;
+  animation: gradientBG 15s ease infinite; /* Endlose Animation */
+  z-index: -1;
+}
+
+/* Keyframes für Hintergrundanimation */
+@keyframes gradientBG {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* Titel-Stil */
+#level-title {
+  font-size: 2.5rem;
+  margin: 5% auto;
   color: #FEF2BF;
+  text-shadow: 0 0 10px rgba(255,255,255,0.5);
 }
 
+/* Container für die Buttons */
 .container {
-  display: block;
-  width: 50%;
-  margin: auto;
-
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 70vh;
 }
 
+/* Reihe für Button-Anordnung */
+.row {
+  display: flex;
+  justify-content: center;
+}
+
+/* Basis-Button-Stil */
 .btn {
-  margin: 25px;
+  margin: 20px;
   display: inline-block;
-  height: 200px;
-  width: 200px;
-  border: 10px solid black;
-  border-radius: 20%;
+  height: 150px;
+  width: 150px;
+  border: 8px solid #000;
+  border-radius: 50%; /* Macht die Buttons rund */
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.3);
 }
 
-.game-over {
-  background-color: rgb(68, 6, 63);
-  opacity: 0.8;
+/* Hover-Effekt für Buttons */
+.btn:hover {
+  transform: scale(1.05);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+}
+
+/* Farben für die einzelnen Buttons */
+.green {
+  background-color: #78f829;
 }
 
 .red {
-  background-color: rgb(243, 89, 12);
-}
-
-.green {
-  background-color: rgb(120, 248, 41);
+  background-color: #f3590c;
 }
 
 .blue {
-  background-color: rgb(32, 147, 209);
+  background-color: #2093d1;
 }
 
 .yellow {
-  background-color: yellow;
+  background-color: #ffeb3b;
 }
 
+/* Stil für gedrückte Buttons */
 .pressed {
-  box-shadow: 0 0 20px white;
-  background-color: grey;
+  box-shadow: 0 0 30px white;
+  background-color: #aaa !important;
+  transform: scale(0.95);
 }
+
+/* Game Over Stil */
+.game-over {
+  background-color: #44063f;
+  opacity: 0.8;
+}
+
+/* Pulsierende Animation für Buttons */
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+  100% { transform: scale(1); }
+}
+
+/* Animation auf Buttons anwenden */
+.btn {
+  animation: pulse 2s infinite;
+}
+
