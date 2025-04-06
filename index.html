@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <!-- Grundlegende Meta-Informationen -->
+  <meta charset="utf-8">
+  <title>Simon</title>
+  <!-- Stylesheet und Schriftart einbinden -->
+  <link rel="stylesheet" href="styles.css">
+  <link href="https://fonts.googleapis.com/css?family=Press+Start+2P" rel="stylesheet">
+</head>
+
+<body>
+  <!-- Titel mit Startanweisung -->
+  <h1 id="level-title">Drücke eine Taste zum Starten</h1>
+  
+  <!-- Hauptcontainer für das Spiel -->
+  <div class="container">
+    <!-- Erste Reihe der Farbbuttons -->
+    <div class="row">
+      <!-- Grün Button -->
+      <div type="button" id="green" class="btn green"></div>
+      <!-- Rot Button -->
+      <div type="button" id="red" class="btn red"></div>
+    </div>
+
+    <!-- Zweite Reihe der Farbbuttons -->
+    <div class="row">
+      <!-- Gelb Button -->
+      <div type="button" id="yellow" class="btn yellow"></div>
+      <!-- Blau Button -->
+      <div type="button" id="blue" class="btn blue"></div>
+    </div>
+  </div>
+
+  <!-- jQuery und JavaScript einbinden -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="game.js" charset="utf-8"></script>
+
+</body>
+
+</html>
