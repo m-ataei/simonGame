@@ -1,45 +1,52 @@
 // Farbdefinition und Variableninitialisierung
 var buttonColours = ["red", "blue", "green", "yellow"];
 
-var gamePattern = []; // Speichert das vom Spiel generierte Muster
-var userClickedPattern = []; // Speichert das vom Benutzer geklickte Muster
+var gamePattern = [];
+var userClickedPattern = [];
 
-var started = false; // Gibt an, ob das Spiel gestartet wurde
-var level = 0; // Aktueller Spiellevel
+var started = false;
+var level = 0;
 
-// Spielstart bei Tastendruck
-$(document).keypress(function() {
-  if (!started) {
-    $("#level-title").text("Level " + level);
-    nextSequence();
-    started = true;
-  }
-});
-
-// Behandlung von Button-Klicks
+// Änderung: Spielstart ohne Sound beim ersten Klick
 $(".btn").click(function() {
+  if (!started) {
+    var clickedColor = $(this).attr("id");
+    // Nur Animation, kein Sound
+    animatePress(clickedColor);
+    
+    $("#level-title").text("Get ready...");
+    
+    setTimeout(function() {
+      $("#level-title").text("Level " + level);
+      nextSequence();
+      started = true;
+    }, 1500);
+    
+    return;
+  }
+  
+  // Normale Spielinteraktion mit Sound
   var userChosenColour = $(this).attr("id");
   userClickedPattern.push(userChosenColour);
 
   playSound(userChosenColour);
   animatePress(userChosenColour);
 
-  checkAnswer(userClickedPattern.length-1); // Überprüfung der Benutzerantwort
+  checkAnswer(userClickedPattern.length-1);
 });
 
+// Rest des Codes bleibt gleich...
 function checkAnswer(currentLevel) {
     if (gamePattern[currentLevel] === userClickedPattern[currentLevel]) {
-      // Wenn der Benutzer das aktuelle Muster korrekt wiederholt hat
       if (userClickedPattern.length === gamePattern.length){
         setTimeout(function () {
           nextSequence();
         }, 1000);
       }
     } else {
-      // Behandlung falscher Antwort
       playSound("wrong");
       $("body").addClass("game-over");
-      $("#level-title").text("Game Over, Drücke eine Taste zum Neustart");
+      $("#level-title").text("Game Over, Klicke auf eine Farbe zum Neustart");
 
       setTimeout(function () {
         $("body").removeClass("game-over");
@@ -49,7 +56,6 @@ function checkAnswer(currentLevel) {
     }
 }
 
-// Generiert die nächste Sequenz
 function nextSequence() {
   userClickedPattern = [];
   level++;
@@ -62,7 +68,6 @@ function nextSequence() {
   playSound(randomChosenColour);
 }
 
-// Animation beim Drücken eines Buttons
 function animatePress(currentColor) {
   $("#" + currentColor).addClass("pressed");
   setTimeout(function () {
@@ -70,13 +75,11 @@ function animatePress(currentColor) {
   }, 100);
 }
 
-// Sound abspielen
 function playSound(name) {
   var audio = new Audio("sounds/" + name + ".mp3");
   audio.play();
 }
 
-// Spiel zurücksetzen
 function startOver() {
   level = 0;
   gamePattern = [];
