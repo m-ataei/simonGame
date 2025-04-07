@@ -101,3 +101,27 @@ body {
 .btn {
   animation: pulse 2s infinite;
 }
+
+/* Intensivere Button-Effekte */
+.pressed {
+  box-shadow: 0 0 50px 15px rgba(255,255,255,0.8) !important;
+  transform: scale(0.9) !important;
+  filter: brightness(1.5) !important;
+  border-color: white !important;
+  transition: all 0.15s cubic-bezier(0.25, 1, 0.5, 1) !important;
+  z-index: 10 !important; /* Sicherstellen, dass der Effekt über anderen Elementen liegt */
+}
+
+/* Basis-Button-Styles mit verbesserten Übergängen */
+.btn {
+  /* ... bestehende Styles ... */
+  transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+  will-change: transform, box-shadow, filter; /* Für bessere Performance */
+  position: relative;
+}
+
+/* Farben mit mehr Sättigung */
+.green { background-color: #80ff00; }
+.red { background-color: #ff4000; }
+.blue { background-color: #00a8ff; }
+.yellow { background-color: #ffff00; }

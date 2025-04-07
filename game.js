@@ -86,3 +86,43 @@ function startOver() {
   started = false;
 }
 
+// Verbesserte animatePress-Funktion mit intensiveren Effekten
+function animatePress(currentColor) {
+  var $button = $("#" + currentColor);
+  
+  // Intensivere Animationseffekte
+  $button.addClass("pressed");
+  $button.css({
+    "box-shadow": "0 0 50px 15px rgba(255,255,255,0.8)", // Stärkerer und größerer Glow
+    "transform": "scale(0.9)", // Deutlichere Schrumpfung
+    "filter": "brightness(1.5)", // Erhöhte Helligkeit
+    "border-color": "white" // Weißer Rand für Kontrast
+  });
+  
+  setTimeout(function () {
+    $button.removeClass("pressed");
+    $button.css({
+      "box-shadow": "0 5px 15px rgba(0,0,0,0.3)",
+      "transform": "scale(1)",
+      "filter": "brightness(1)",
+      "border-color": "black"
+    });
+  }, 50); // Etwas längere Animationsdauer
+}
+
+// Verbesserte nextSequence für konsistente Effekte
+function nextSequence() {
+  userClickedPattern = [];
+  level++;
+  $("#level-title").text("Level " + level);
+  var randomNumber = Math.floor(Math.random() * 4);
+  var randomChosenColour = buttonColours[randomNumber];
+  gamePattern.push(randomChosenColour);
+
+  // Verstärkte Animation für Programm-Aktivierung
+  var $button = $("#" + randomChosenColour);
+  $button.fadeTo(100, 0.3).fadeTo(100, 1).fadeTo(100, 0.3).fadeTo(100, 1, function() {
+    animatePress(randomChosenColour);
+    playSound(randomChosenColour);
+  });
+}
